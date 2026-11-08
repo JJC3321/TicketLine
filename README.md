@@ -7,7 +7,7 @@
 - **Why Solana:** vote accounts have a programmable *authorized withdrawer*, so a PDA can hold a capability — not a key — that is provably limited to paying the ticket and repaying the pool.
 - **Status:** full on-chain program + 34 LiteSVM tests green (35 with the `demo-sim` feature); mainnet runway scanner over all 697 vote accounts; a scripted localnet rescue demo (`pnpm demo:fresh` → `pnpm demo:e2e`) and a live dashboard.
 
-**Hackathon:** MLH Solana Hackathon (Nov 6–8, 2026)  •  **Track:** DeFi  •  **Demo video:** VIDEO_LINK_HERE  •  **AI tools:** Devin ([details](#built-during-the-hackathon))
+**Hackathon:** MLH Solana Hackathon (Nov 6–8, 2026)  •  **Track:** DeFi  •  **Demo video:** VIDEO_LINK_HERE
 
 ![Mainnet runway dashboard](docs/screenshots/home.png)
 *The `/` page: every mainnet vote account scanned and classified by how many epochs its free balance can still cover the VAT.*
@@ -229,20 +229,6 @@ docs/screenshots/             dashboard captures
 ```
 
 (`security.json` is Anchor's scaffold metadata file.)
-
-## Built during the hackathon
-
-TicketLine was built from scratch for the **MLH Solana Hackathon (November 6–8, 2026)**. The first commit is from Saturday, November 7; see the git history.
-
-**AI tools used:** [Devin](https://devin.ai) (Cognition's AI software engineer) was used throughout: researching the Alpenglow/VAT protocol rules, generating and reviewing code for the Anchor program, backend, and dashboard, writing tests, and drafting this README. Commits made with Devin carry a `Co-Authored-By: Devin` trailer. Design decisions, scope, and the real-vs-simulated boundaries were mine.
-
-### Challenges and what I learned
-
-- **Vote program CPIs without the SDK.** The Vote program's `Withdraw` and `Authorize` instructions are hand-encoded (`vote.rs`) and checked byte-for-byte against `solana-vote-interface`, so a PDA can sign them via `invoke_signed` without pulling the vote crate into the on-chain program.
-- **Reading VoteStateV4 directly.** A fixed-offset parser reads the BLS key, pending delegator rewards, and authorized withdrawer straight from account bytes, and was verified field-by-field against RPC `jsonParsed` output on a live mainnet account.
-- **Localnet doesn't run Votor yet.** Agave 4.3.2's test validator activates the VAT feature gates but not SIMD-0326, so the ticket is never actually burned. Instead of faking the whole flow, only the burn trigger and commission source are simulated; the authority model and all lending logic run for real on-chain.
-- **Rent differs between clusters.** Localnet and mainnet report different rent-exempt minimums for the same 3762-byte account, so the program computes `Rent::minimum_balance(data_len)` at runtime instead of hardcoding it.
-- **Keeper robustness.** Anchor errors arrive both as named log lines and as raw `custom program error: 0x...` codes; the backend decodes both against the IDL so expected conditions stay quiet and real failures surface once per epoch.
 
 ## Trusted roles, limitations, roadmap
 
