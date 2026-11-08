@@ -31,6 +31,8 @@ for i in $(seq 1 60); do
   sleep 1
 done
 
+for i in $(seq 1 30); do [ -f "$LEDGER/validator-keypair.json" ] && [ -f "$LEDGER/vote-account-keypair.json" ] && break; sleep 1; done
+
 cp "$LEDGER/validator-keypair.json" "$KEYS/identity.json"
 cp "$LEDGER/vote-account-keypair.json" "$KEYS/vote-withdrawer.json"
 

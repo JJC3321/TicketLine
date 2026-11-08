@@ -17,3 +17,10 @@ for i in $(seq 1 60); do
   sleep 1
 done
 curl -s http://127.0.0.1:8787/health && echo " — backend up (pid $(cat .localnet/backend.pid))"
+
+bash scripts/demo-web.sh
+for i in $(seq 1 90); do
+  curl -sf -o /dev/null http://localhost:3000 && break
+  sleep 1
+done
+echo "web up on :3000 (pid $(cat .localnet/web.pid))"

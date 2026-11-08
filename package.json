@@ -7,7 +7,9 @@
     "scan:once": "pnpm --filter @ticketline/backend scan:once",
     "demo:e2e": "pnpm --filter @ticketline/backend exec tsx ../../scripts/demo-e2e.ts",
     "demo:fresh": "bash scripts/demo-fresh.sh",
-    "demo:stop": "bash scripts/demo-stop.sh"
+    "demo:stop": "bash scripts/demo-stop.sh",
+    "demo:web": "bash scripts/demo-web.sh",
+    "start": "next start -p 3000"
   },
   "type": "module",
   "devDependencies": {
