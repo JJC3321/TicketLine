@@ -5,10 +5,22 @@ import {
 import { bus } from "./events.ts";
 import type { Demo } from "./state.ts";
 
-const EXPECTED = ["AlreadyToppedUpThisEpoch", "NoDeficit", "NothingToSweep", "0x177"]; // custom errs
-function isExpected(e: unknown): boolean {
+// expected no-op program errors (matched by IDL error name)
+const EXPECTED = new Set(["AlreadyToppedUpThisEpoch", "NoDeficit", "NothingToSweep"]);
+
+function anchorErrorName(e: unknown): string | null {
   const s = String(e);
-  return EXPECTED.some((x) => s.includes(x));
+  const m = s.match(/Error Code: (\w+)|custom program error: (0x[0-9a-f]+)/i);
+  if (m?.[1]) return m[1];
+  if (m?.[2]) return `custom:${m[2]}`;
+  for (const name of [...EXPECTED, "InsufficientHeadroom", "CreditExceeded", "PoolIlliquid"]) {
+    if (s.includes(name)) return name;
+  }
+  return null;
+}
+function isExpected(e: unknown): boolean {
+  const n = anchorErrorName(e);
+  return n !== null && EXPECTED.has(n);
 }
 
 export async function sendTx(
@@ -30,6 +42,14 @@ async function voteRent(d: Demo): Promise<bigint> {
   return BigInt(await d.conn.getMinimumBalanceForRentExemption(3762));
 }
 
+async function poolTicket(d: Demo): Promise<bigint> {
+  const { poolPda } = await import("@ticketline/sdk");
+  const acct = await d.conn.getAccountInfo(poolPda()[0]);
+  if (!acct) return 800_000_000n;
+  const dv = new DataView(acct.data.buffer, acct.data.byteOffset, acct.data.length);
+  return dv.getBigUint64(8 + 96 + 2, true); // disc + 3 pubkeys + u16
+}
+
 async function topUpIfNeeded(d: Demo, slotsRemaining: number) {
   if (!d.vote || !d.enrolled || d.exited) return;
   if (slotsRemaining > 48) return;
@@ -39,7 +59,8 @@ async function topUpIfNeeded(d: Demo, slotsRemaining: number) {
     d.counters.topUps++;
     bus.keeper("KeeperTopUp", { sig, vote: d.vote.toBase58() }, false, sig);
   } catch (e) {
-    if (!isExpected(e)) throw e;
+    if (isExpected(e)) return;
+    bus.keeper("TopUpBlocked", { reason: anchorErrorName(e) ?? String(e), vote: d.vote.toBase58() });
   }
 }
 
@@ -50,7 +71,7 @@ async function boundary(d: Demo, epoch: number) {
   if (!acct) return;
   const h = parseVoteV4(acct.data);
   const rent = await voteRent(d);
-  const ticket = 800_000_000n;
+  const ticket = await poolTicket(d);
   const lamports = BigInt(acct.lamports);
   const admitted = lamports - h.pendingDelegatorRewards >= rent + ticket;
   const rec = {
@@ -73,11 +94,17 @@ async function boundary(d: Demo, epoch: number) {
       d.burnedThisEpoch = epoch;
       bus.keeper("SimTicketBurn", { epoch, sig, simulated: true }, true, sig);
     } catch (e) {
-      if (!isExpected(e) && !String(e).includes("InsufficientHeadroom")) throw e;
+      const n = anchorErrorName(e);
+      if (n !== "InsufficientHeadroom" && !isExpected(e)) {
+        bus.keeper("SimBurnFailed", { epoch, reason: n ?? String(e), simulated: true }, true);
+      }
     }
   } else if (!admitted) {
     bus.keeper("WouldBeExcluded", { epoch, vote: vote.toBase58(), simulated: true }, true);
   }
+
+  const acctBurn = await d.conn.getAccountInfo(vote);
+  rec.balanceAfterBurn = acctBurn ? acctBurn.lamports : 0;
 
   // simulated commission per schedule
   const idx = Math.min(d.boundaryCount, d.schedule.length - 1);
@@ -100,17 +127,19 @@ async function boundary(d: Demo, epoch: number) {
     d.counters.sweeps++;
     bus.keeper("KeeperSweep", { epoch, sig }, false, sig);
   } catch (e) {
-    if (!isExpected(e)) throw e;
+    if (!isExpected(e)) {
+      bus.keeper("SweepFailed", { epoch, reason: anchorErrorName(e) ?? String(e), vote: vote.toBase58() });
+    }
   }
 
   const acct2 = await d.conn.getAccountInfo(vote);
   rec.balanceAfterCommission = acct2 ? acct2.lamports : 0;
-  const posAcct = await d.conn.getAccountInfo(posPda(vote)[0]);
-  if (posAcct) {
-    const dv = new DataView(posAcct.data.buffer, posAcct.data.byteOffset, posAcct.data.length);
-    rec.debt = Number(dv.getBigUint64(8 + 96, true)) + Number(dv.getBigUint64(8 + 104, true));
-  }
-  rec.balanceAfterBurn = rec.balanceAfterCommission;
+  try {
+    type PosT = { principal: { toString(): string }; fees: { toString(): string } };
+    type Accounts = Record<string, { fetch: (k: PublicKey) => Promise<PosT> }>;
+    const pos = await (d.program.account as Accounts)["position"].fetch(posPda(vote)[0]);
+    rec.debt = Number(BigInt(pos.principal.toString()) + BigInt(pos.fees.toString()));
+  } catch { /* position may not exist */ }
   d.history.push(rec);
   if (d.history.length > 64) d.history.shift();
 }

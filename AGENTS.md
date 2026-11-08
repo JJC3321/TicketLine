@@ -117,3 +117,23 @@ Tests: `tests/common/mod.rs` helpers; vote accounts crafted via solana-vote-inte
   when slotsRemaining <= 48. Expected errors treated as no-ops.
 - Root package.json has "type":"module" (needed for tsx on scripts/*.ts).
 - pnpm: onlyBuiltDependencies in pnpm-workspace.yaml (esbuild/bufferutil/utf-8-validate).
+
+## Web + ops (phase: web)
+- `apps/web` (@ticketline/web): Next.js 15 App Router + Tailwind + Recharts + SWR(2s)
+  + EventSource(/events). Pages: `/` mainnet runway (cards, histogram, sortable table),
+  `/pool` (TVL/utilization/fees/est-APY + lender deposit/withdraw), `/demo` (stepper,
+  epoch progress + keeper-window marker, history charts, position card, SSE feed with
+  SIMULATED tags + explorer custom-cluster tx links). Env: NEXT_PUBLIC_BACKEND_URL
+  (default http://localhost:8787). `pnpm --filter web dev|build|typecheck`.
+- `pnpm demo:fresh` (scripts/demo-fresh.sh): stops old procs, `localnet.sh --no-build`
+  (ledger reset), restarts backend via `setsid` (survives the calling shell —
+  plain `nohup ... &` children get reaped when the wsl session exits). Pid file:
+  .localnet/backend.pid. `pnpm demo:stop` stops both.
+- Backend additions: recover-on-boot (reconstructs setupDone/enrolled/inconsistent
+  from chain on start and lazily on /localnet/state); keeper emits TopUpBlocked /
+  SweepFailed / SimBurnFailed on non-expected errors (expected set = IDL error names
+  AlreadyToppedUpThisEpoch|NoDeficit|NothingToSweep; InsufficientHeadroom for sim burn);
+  admission check reads ticket_lamports from on-chain Pool; position decoded via
+  program.account.position.fetch; history records real balances after burn/commission.
+- `scripts/screenshot.mjs`: playwright screenshots (playwright is a root devDep;
+  chromium at ~/.cache/ms-playwright). Output .localnet/screens/*.png.

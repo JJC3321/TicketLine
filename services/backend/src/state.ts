@@ -3,6 +3,7 @@ import { Connection, Keypair, PublicKey, Transaction, VersionedTransaction } fro
 import { idl as ticketlineIdl, PROGRAM_ID } from "@ticketline/sdk";
 import { cfg } from "./config.ts";
 import { loadKeys, type DemoKeys } from "./keys.ts";
+import { authPda, parseVoteV4, poolPda, posPda } from "@ticketline/sdk";
 
 export interface EpochRecord {
   epoch: number;
@@ -32,6 +33,9 @@ export class Demo {
   history: EpochRecord[] = [];
   counters = { topUps: 0, sweeps: 0, sweepsRepaid: 0n };
   exited = false;
+  setupDone = false;
+  recovering = false;
+  inconsistent: string | null = null;
 
   constructor() {
     this.conn = new Connection(cfg.localnetRpc, "confirmed");
@@ -58,6 +62,34 @@ export class Demo {
     this.vote = this.keys.voteWithdrawer.publicKey; // bootstrap: vote account == its keypair
   }
 
+  /** Reconstruct demo state from chain so a restart never breaks the demo. */
+  async recover() {
+    this.initKeys();
+    const [pool] = poolPda();
+    const poolAcct = await this.conn.getAccountInfo(pool);
+    this.setupDone = !!poolAcct;
+    this.inconsistent = null;
+    if (!this.vote) return;
+    const [pos] = posPda(this.vote);
+    const posAcct = await this.conn.getAccountInfo(pos);
+    const voteAcct = await this.conn.getAccountInfo(this.vote);
+    if (posAcct) {
+      this.enrolled = true;
+      this.exited = false;
+      const ei = await this.conn.getEpochInfo();
+      this.lastSeenEpoch = ei.epoch;
+      this.startKeeper();
+    } else if (voteAcct) {
+      try {
+        const h = parseVoteV4(voteAcct.data);
+        if (h.authorizedWithdrawer.equals(authPda(this.vote)[0])) {
+          this.inconsistent =
+            "vote withdrawer is the auth PDA but no position account exists — reset the ledger (pnpm demo:fresh) or re-enroll on-chain";
+        }
+      } catch { /* not a V4 account */ }
+    }
+  }
+
   reset() {
     this.stopKeeper();
     this.enrolled = false;
@@ -69,6 +101,8 @@ export class Demo {
     this.lastSeenEpoch = -1;
     this.history = [];
     this.counters = { topUps: 0, sweeps: 0, sweepsRepaid: 0n };
+    this.setupDone = false;
+    this.inconsistent = null;
   }
 
   startKeeper() {

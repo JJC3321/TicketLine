@@ -58,6 +58,10 @@ app.post("/keeper/start", wrap(async () => { demo.startKeeper(); return { runnin
 app.post("/keeper/stop", wrap(async () => { demo.stopKeeper(); return { running: false }; }));
 
 app.get("/localnet/state", async () => {
+  if (!demo.setupDone && !demo.enrolled && !demo.recovering) {
+    demo.recovering = true;
+    demo.recover().catch((e) => console.error("[recover]", e)).finally(() => { demo.recovering = false; });
+  }
   const conn: Connection = demo.conn;
   const [pool] = poolPda();
   const [vault] = vaultPda(pool);
@@ -161,6 +165,8 @@ app.get("/localnet/state", async () => {
       epoch: ei.epoch, slotIndex: ei.slotIndex, slotsInEpoch: ei.slotsInEpoch,
       slotsRemaining: ei.slotsInEpoch - ei.slotIndex, absoluteSlot: ei.absoluteSlot,
     },
+    setupDone: demo.setupDone,
+    inconsistent: demo.inconsistent,
     keeper: {
       running: demo.keeperRunning,
       enrolled: demo.enrolled,
@@ -192,6 +198,7 @@ const port = cfg.port;
 app.listen({ port, host: "0.0.0.0" }).then(() => {
   console.log(`backend on :${port}`);
   demo.initKeys();
+  void demo.recover().catch((e) => console.error("[recover]", e));
   subscribeProgramLogs(demo.conn);
   startScanner();
 });
