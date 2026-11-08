@@ -5,22 +5,22 @@ import {
 import { bus } from "./events.ts";
 import type { Demo } from "./state.ts";
 
+import { anchorErrorName } from "./errdecode.ts";
+
 // expected no-op program errors (matched by IDL error name)
 const EXPECTED = new Set(["AlreadyToppedUpThisEpoch", "NoDeficit", "NothingToSweep"]);
-
-function anchorErrorName(e: unknown): string | null {
-  const s = String(e);
-  const m = s.match(/Error Code: (\w+)|custom program error: (0x[0-9a-f]+)/i);
-  if (m?.[1]) return m[1];
-  if (m?.[2]) return `custom:${m[2]}`;
-  for (const name of [...EXPECTED, "InsufficientHeadroom", "CreditExceeded", "PoolIlliquid"]) {
-    if (s.includes(name)) return name;
-  }
-  return null;
-}
 function isExpected(e: unknown): boolean {
   const n = anchorErrorName(e);
   return n !== null && EXPECTED.has(n);
+}
+
+// dedupe blocked notices: once per reason per epoch
+const blockedSeen = new Set<string>();
+function blockedOnce(key: string): boolean {
+  if (blockedSeen.has(key)) return true;
+  blockedSeen.add(key);
+  if (blockedSeen.size > 256) blockedSeen.clear();
+  return false;
 }
 
 export async function sendTx(
@@ -60,7 +60,10 @@ async function topUpIfNeeded(d: Demo, slotsRemaining: number) {
     bus.keeper("KeeperTopUp", { sig, vote: d.vote.toBase58() }, false, sig);
   } catch (e) {
     if (isExpected(e)) return;
-    bus.keeper("TopUpBlocked", { reason: anchorErrorName(e) ?? String(e), vote: d.vote.toBase58() });
+    const reason = anchorErrorName(e) ?? String(e).slice(0, 120);
+    const epoch = d.lastSeenEpoch;
+    if (blockedOnce(`topup:${epoch}:${reason}`)) return;
+    bus.keeper("TopUpBlocked", { epoch, reason, vote: d.vote.toBase58() });
   }
 }
 

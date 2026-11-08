@@ -22,6 +22,7 @@ export default function Home() {
   const { data, error } = useSWR<Runway>("/mainnet/runway", () => get("/mainnet/runway"), { refreshInterval: 30000 });
   const [sort, setSort] = useState<"risk" | "runway" | "stake">("risk");
   const [filt, setFilt] = useState<string>("");
+  const [page, setPage] = useState(0);
   if (error || !data) return error ? <BackendDown /> : <div className="text-zinc-500">Loading…</div>;
   const c = data.summary.counts;
   const hist = BUCKETS.map(([label, f]) => ({ label, n: data.accounts.filter((a) => f(a.runwayEpochs)).length }));
@@ -52,7 +53,7 @@ export default function Home() {
       <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4">
         <div className="text-sm text-zinc-400 mb-2">VAT runway distribution (epochs)</div>
         <ResponsiveContainer width="100%" height={160}>
-          <BarChart data={hist}><XAxis dataKey="label" stroke="#71717a" fontSize={12} /><YAxis stroke="#71717a" fontSize={12} /><Tooltip /><Bar dataKey="n" fill="#38bdf8" /></BarChart>
+          <BarChart data={hist.map((h) => ({ ...h, v: Math.max(h.n, 0.4) }))}><XAxis dataKey="label" stroke="#71717a" fontSize={12} /><YAxis scale="log" domain={[0.5, "auto"]} stroke="#71717a" fontSize={12} allowDecimals={false} /><Tooltip /><Bar dataKey="v" fill="#38bdf8" label={{ position: "top", fill: "#a1a1aa", fontSize: 11, formatter: (_v: unknown, e: { index?: number }) => String(hist[e?.index ?? 0]?.n ?? "") }} /></BarChart>
         </ResponsiveContainer>
       </div>
       <div className="flex gap-2 text-sm items-center">
@@ -67,7 +68,7 @@ export default function Home() {
           <th>#</th><th>vote</th><th>stake</th><th>free</th><th>runway</th><th>avg comm/epoch</th><th>coverage</th><th>BLS</th><th>status</th>
         </tr></thead>
         <tbody>
-          {rows.slice(0, 200).map((a) => (
+          {rows.slice(page * 50, page * 50 + 50).map((a) => (
             <tr key={a.votePubkey} className="border-t border-zinc-900 hover:bg-zinc-900/60">
               <td className="py-1.5 text-zinc-500">{a.rank}</td>
               <td className="font-mono cursor-pointer" title="click to copy" onClick={() => navigator.clipboard.writeText(a.votePubkey)}>{short(a.votePubkey)}</td>
@@ -82,6 +83,11 @@ export default function Home() {
           ))}
         </tbody>
       </table>
+      <div className="flex gap-2 text-sm items-center">
+        <button disabled={page === 0} onClick={() => setPage(page - 1)} className="px-2 py-1 rounded border border-zinc-800 disabled:opacity-40">prev</button>
+        <span className="text-zinc-500">page {page + 1} / {Math.max(1, Math.ceil(rows.length / 50))} · {rows.length} rows</span>
+        <button disabled={(page + 1) * 50 >= rows.length} onClick={() => setPage(page + 1)} className="px-2 py-1 rounded border border-zinc-800 disabled:opacity-40">next</button>
+      </div>
     </div>
   );
 }

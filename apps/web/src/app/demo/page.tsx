@@ -6,6 +6,36 @@ import { BackendDown } from "@/components/BackendDown";
 import { useState } from "react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceLine } from "recharts";
 
+const S = (v: unknown) => (Number(v ?? 0) / 1e9).toLocaleString(undefined, { maximumFractionDigits: 6 });
+function detail(e: { name: string; data: Record<string, unknown> }): string {
+  const d = e.data;
+  switch (e.name) {
+    case "TopUp":
+      return `top-up ${S(d.amount)} SOL (+${S(d.fee)} fee) · debt ${S(Number(BigInt(d.principal as string) + BigInt(d.fees as string)))} SOL`;
+    case "KeeperTopUp": return "keeper top-up";
+    case "Sweep":
+      return `swept ${S(d.repaid)} SOL · fees ${S(d.fee_part)} / principal ${S(d.principal_part)} · debt left ${S(Number(BigInt(d.principal as string) + BigInt(d.fees as string)))} SOL`;
+    case "KeeperSweep": return "keeper sweep";
+    case "AdmissionCheck":
+      return d.admitted === true
+        ? `balance ${S(d.lamports)} >= required ${S(d.requiredForAdmission)} SOL`
+        : `balance ${S(d.lamports)} < required ${S(d.requiredForAdmission)} SOL`;
+    case "SimTicketBurn": return `burned ${S(d.lamports)} SOL as VAT`;
+    case "SimCommission": return `+${S(d.lamports)} SOL commission`;
+    case "TopUpBlocked": return String(d.reason ?? "blocked");
+    case "SweepFailed": return String(d.reason ?? "failed");
+    case "Deposited": return `${S(d.lamports)} SOL -> ${S(d.shares)} tlSOL`;
+    case "Withdrawn": return `${S(d.shares)} tlSOL -> ${S(d.lamports)} SOL`;
+    case "Enrolled": return `vote ${String(d.vote_account ?? "").slice(0, 8)}…`;
+    case "Exited": return "position closed, withdrawer restored";
+    case "SurplusWithdrawn": return `${S(d.lamports)} SOL to payout`;
+    case "Drain": return "vote account drained to ~1 ticket";
+    case "PoolInit": return "pool initialized";
+    case "WouldBeExcluded": return "below rent+ticket — would lose the epoch";
+    default: return "";
+  }
+}
+
 export default function Demo() {
   const { data, error, mutate } = useSWR<LocalState>("/localnet/state", () => get("/localnet/state"), { refreshInterval: 2000 });
   const evs = useEvents();
@@ -67,22 +97,22 @@ export default function Demo() {
       </div>
       <div className="grid md:grid-cols-2 gap-4">
         <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4">
-          <div className="text-sm text-zinc-400 mb-2">Vote balance vs required (per epoch)</div>
+          <div className="text-sm text-zinc-400 mb-2">Vote balance (SOL) vs required for admission (rent+ticket)</div>
           <ResponsiveContainer width="100%" height={180}>
             <LineChart data={chart}>
               <XAxis dataKey="epoch" stroke="#71717a" fontSize={11} /><YAxis stroke="#71717a" fontSize={11} /><Tooltip />
               <ReferenceLine y={0.837} stroke="#f59e0b" strokeDasharray="4 4" label={{ value: "required", fill: "#f59e0b", fontSize: 10 }} />
-              <Line type="monotone" dataKey="balance" stroke="#38bdf8" dot={false} name="before burn" />
-              <Line type="monotone" dataKey="afterCommission" stroke="#34d399" dot={false} name="after commission+sweep" />
+              <Line type="stepAfter" dataKey="balance" stroke="#38bdf8" dot={false} name="balance before burn (SOL)" />
+              <Line type="stepAfter" dataKey="afterCommission" stroke="#34d399" dot={false} name="after commission+sweep (SOL)" />
             </LineChart>
           </ResponsiveContainer>
         </div>
         <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4">
-          <div className="text-sm text-zinc-400 mb-2">Debt per epoch</div>
+          <div className="text-sm text-zinc-400 mb-2">Debt per epoch (SOL)</div>
           <ResponsiveContainer width="100%" height={180}>
             <LineChart data={chart}>
               <XAxis dataKey="epoch" stroke="#71717a" fontSize={11} /><YAxis stroke="#71717a" fontSize={11} /><Tooltip />
-              <Line type="monotone" dataKey="debt" stroke="#f87171" dot />
+              <Line type="stepAfter" dataKey="debt" stroke="#f87171" dot name="debt (SOL)" />
             </LineChart>
           </ResponsiveContainer>
         </div>
@@ -102,7 +132,7 @@ export default function Demo() {
         <div className="text-sm text-zinc-400 mb-2">Events</div>
         <div className="space-y-1 max-h-80 overflow-y-auto text-sm">
           {evs.length === 0 && <div className="text-zinc-600">waiting for events…</div>}
-          {evs.map((e) => (
+          {evs.filter((e) => !(e.kind === "keeper" && e.signature && evs.some((p) => p.kind === "program" && p.signature === e.signature))).map((e) => (
             <div key={e.seq} className="flex gap-2 items-center">
               {e.name === "AdmissionCheck" && e.data.admitted === true ? (
                 <span className="text-emerald-400 font-semibold">✓ Validator admitted for epoch {String(e.data.epoch)}</span>
@@ -111,7 +141,8 @@ export default function Demo() {
               ) : (
                 <span className={e.kind === "keeper" ? "text-sky-300" : "text-violet-300"}>{e.name}</span>
               )}
-              {e.simulated && <span className="text-[10px] px-1 rounded bg-amber-900 text-amber-200">SIMULATED</span>}
+              <span className="text-zinc-400 text-xs">{detail(e)}</span>
+              {(e.simulated || e.name === "SimTicketBurn" || e.name === "SimCommission" || e.name === "AdmissionCheck" || e.name === "WouldBeExcluded") && <span className="text-[10px] px-1 rounded bg-amber-900 text-amber-200">SIMULATED</span>}
               {e.signature && <a className="text-zinc-500 font-mono text-xs hover:text-sky-400" href={EXPLORER(e.signature)} target="_blank">{short(e.signature)}</a>}
               <span className="text-zinc-600 text-xs ml-auto">{new Date(e.ts).toLocaleTimeString()}</span>
             </div>

@@ -3,7 +3,10 @@ export const post = (p: string, body?: unknown) =>
   fetch(`${API}${p}`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body ?? {}) }).then((r) => r.json());
 export const get = <T>(p: string): Promise<T> => fetch(`${API}${p}`).then((r) => r.json());
 export const sol = (l: string | number | bigint) => (Number(l) / 1e9);
-export const fmt = (n: number, d = 2) => n.toLocaleString(undefined, { maximumFractionDigits: d });
+export const fmt = (n: number, d = 2) =>
+  n !== 0 && Math.abs(n) < 1
+    ? n.toLocaleString(undefined, { maximumFractionDigits: 6 })
+    : n.toLocaleString(undefined, { maximumFractionDigits: d });
 export const short = (k: string, n = 6) => `${k.slice(0, n)}…${k.slice(-4)}`;
 export const EXPLORER = (sig: string) =>
   `https://explorer.solana.com/tx/${sig}?cluster=custom&customUrl=http://localhost:8899`;
