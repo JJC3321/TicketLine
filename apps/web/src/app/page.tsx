@@ -3,7 +3,7 @@ import useSWR from "swr";
 import { get, sol, fmt, short, type Runway } from "@/lib/api";
 import { BackendDown } from "@/components/BackendDown";
 import { useState } from "react";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, LabelList } from "recharts";
 
 const SEV = { NO_BLS: 0, AT_RISK: 1, WATCH: 2, SAFE: 3 } as const;
 const PILL: Record<string, string> = {
@@ -53,7 +53,7 @@ export default function Home() {
       <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4">
         <div className="text-sm text-zinc-400 mb-2">VAT runway distribution (epochs)</div>
         <ResponsiveContainer width="100%" height={160}>
-          <BarChart data={hist.map((h) => ({ ...h, v: Math.max(h.n, 0.4) }))}><XAxis dataKey="label" stroke="#71717a" fontSize={12} /><YAxis scale="log" domain={[0.5, "auto"]} stroke="#71717a" fontSize={12} allowDecimals={false} /><Tooltip /><Bar dataKey="v" fill="#38bdf8" label={{ position: "top", fill: "#a1a1aa", fontSize: 11, formatter: (_v: unknown, e: { index?: number }) => String(hist[e?.index ?? 0]?.n ?? "") }} /></BarChart>
+          <BarChart margin={{ top: 18 }} data={hist.map((h) => ({ ...h, v: Math.max(h.n, 0.4) }))}><XAxis dataKey="label" stroke="#71717a" fontSize={12} /><YAxis scale="log" domain={[0.5, "auto"]} stroke="#71717a" fontSize={12} allowDecimals={false} /><Tooltip /><Bar dataKey="v" fill="#38bdf8"><LabelList dataKey="n" position="top" fill="#a1a1aa" fontSize={11} /></Bar></BarChart>
         </ResponsiveContainer>
       </div>
       <div className="flex gap-2 text-sm items-center">

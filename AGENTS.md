@@ -137,3 +137,11 @@ Tests: `tests/common/mod.rs` helpers; vote accounts crafted via solana-vote-inte
   program.account.position.fetch; history records real balances after burn/commission.
 - `scripts/screenshot.mjs`: playwright screenshots (playwright is a root devDep;
   chromium at ~/.cache/ms-playwright). Output .localnet/screens/*.png.
+
+## Ops notes (web restart)
+- WSL can idle-shut down when no Linux session is open, killing validator/backend/web.
+  After a WSL restart: `pnpm demo:fresh`.
+- Restart web: `pnpm demo:web` (prod build + next start, detached). It kills the old
+  server's whole process group (setsid pid = group leader; kill -- -PID) and falls
+  back to fuser -k 3000/tcp, so no stale `next start` keeps the port.
+- `pnpm demo:stop` group-kills web+backend too.
