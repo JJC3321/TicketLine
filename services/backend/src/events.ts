@@ -14,6 +14,11 @@ class EventBus extends EventEmitter {
   private seq = 0;
   readonly ring: DemoEvent[] = [];
   emit0(e: Omit<DemoEvent, "seq" | "ts">) {
+    if (
+      e.signature &&
+      this.ring.some((x) => x.kind === e.kind && x.name === e.name && x.signature === e.signature)
+    )
+      return;
     const ev: DemoEvent = { ...e, seq: ++this.seq, ts: Date.now() };
     this.ring.push(ev);
     if (this.ring.length > 200) this.ring.shift();
