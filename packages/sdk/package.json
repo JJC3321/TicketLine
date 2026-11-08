@@ -1,0 +1,25 @@
+{
+  "name": "@ticketline/sdk",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "idl": "cp ../../target/idl/ticketline.json src/idl/"
+  },
+  "dependencies": {
+    "@anchor-lang/core": "1.2.2",
+    "@solana/web3.js": "^1.98.4",
+    "bn.js": "^5.2.3"
+  },
+  "devDependencies": {
+    "@types/bn.js": "^5.2.0",
+    "@types/node": "^22",
+    "typescript": "^5.6",
+    "vitest": "^3"
+  }
+}

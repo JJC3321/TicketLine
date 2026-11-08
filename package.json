@@ -2,5 +2,10 @@
   "name": "ticketline",
   "private": true,
   "packageManager": "pnpm@12.18.0",
-  "scripts": {}
+  "scripts": {
+    "sdk:idl": "pnpm --filter @ticketline/sdk idl",
+    "scan:once": "pnpm --filter @ticketline/backend scan:once",
+    "demo:e2e": "pnpm --filter @ticketline/backend exec tsx ../../scripts/demo-e2e.ts"
+  },
+  "type": "module"
 }

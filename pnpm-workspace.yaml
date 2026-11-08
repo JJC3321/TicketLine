@@ -2,3 +2,7 @@ packages:
   - packages/*
   - services/*
   - apps/*
+onlyBuiltDependencies:
+  - esbuild
+  - bufferutil
+  - utf-8-validate

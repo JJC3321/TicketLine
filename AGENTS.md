@@ -92,3 +92,28 @@ Tests: `tests/common/mod.rs` helpers; vote accounts crafted via solana-vote-inte
 - Build/test with Agave 4.1.2 (active_release); localnet runs 4.3.2 binary by path.
 - Real-vs-sim: VAT burn and commission are **simulated** on localnet (`demo-sim` feature +
   `/demo/sim-commission`), labeled per plan. PDA withdraw-authority enforcement is real.
+
+## Off-chain (Phase: sdk+backend+e2e)
+- `packages/sdk` (@ticketline/sdk): TS SDK — pdas.ts, vote.ts (V4 parser + vote ix encoders),
+  math.ts (math.rs mirror + runway), client.ts (@anchor-lang/core 1.2.2 builders, incl.
+  sim_ticket_burn + raw vote Authorize/Withdraw ixs). `pnpm sdk:idl` copies target/idl.
+  NOTE: core 1.2.2 exports no Wallet/NodeWallet at runtime — backend implements the Wallet
+  interface inline (state.ts).
+- `services/backend` (@ticketline/backend): Fastify :8787, CORS on.
+  Run: `cd services/backend && pnpm exec tsx src/server.ts` (or `pnpm dev`).
+  Endpoints: /health, /mainnet/runway (+POST /mainnet/refresh), /localnet/state, /events (SSE),
+  POST /demo/{setup,deposit,withdraw,drain,enroll,commission-schedule,exit,reset},
+  POST /oracle/apply, POST /keeper/{start,stop}.
+  Scanner: `pnpm scan:once` writes data/mainnet-snapshot.json (committed); 10-min background
+  refresh in server; getInflationReward batched 32/call with backoff.
+- `scripts/localnet.sh` (`--no-build` to skip anchor build): builds demo-sim .so, starts
+  4.3.2 validator on .localnet/ledger (slots-per-epoch 128), copies identity+vote-withdrawer
+  keypairs into .localnet/keys (identity.json = validator, vote-withdrawer.json = vote acct).
+- `pnpm demo:e2e` (scripts/demo-e2e.ts): spawns backend if not running; full rescue scenario.
+  LAST GREEN: 145 s, 3 top-ups, 2 sweeps, debt->0, fees 19,500,000 lamports, exit restores
+  withdrawer, admission check admitted every epoch.
+- Keeper boundary order per epoch: computed admission check -> sim_ticket_burn (once/epoch)
+  -> sim commission (schedule, default [0.3,0.3,0.3,then 2.0] SOL) -> sweep; in-epoch top_up
+  when slotsRemaining <= 48. Expected errors treated as no-ops.
+- Root package.json has "type":"module" (needed for tsx on scripts/*.ts).
+- pnpm: onlyBuiltDependencies in pnpm-workspace.yaml (esbuild/bufferutil/utf-8-validate).
