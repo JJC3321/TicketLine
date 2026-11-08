@@ -19,7 +19,25 @@ nvm is initialized in `~/.profile`. `wsl bash -s` has NO PATH — always use `ba
 CLI keypair: `~/.config/solana/id.json`, RPC url = localhost.
 
 ## Commands
-- `anchor build`, `cargo test -p ticketline` — both PASS (Agave 4.1.2 active).
+- `anchor build` — normal build (.so + IDL without sim ix).
+- `anchor build -- --features demo-sim` — build WITH `sim_ticket_burn` (.so + IDL both include it).
+  NOTE: `cargo test -p ticketline --features demo-sim` needs the .so from the demo-sim
+  build (LiteSVM loads `target/deploy/ticketline.so`); run the demo-sim anchor build first.
+- `cargo test -p ticketline` / `cargo test -p ticketline --features demo-sim` — all green.
+- Program ID: `HDbnoeCddu4hK3JzX78TS4RAq6ZVypvqMhXwk7CEbHyq`; .so ~318 KB.
+
+## Program layout (post-Phase-0)
+`programs/ticketline/src`: lib.rs, state.rs (Pool/Position), errors.rs, events.rs,
+math.rs (pure, unit-tested), vote.rs (V4 fixed-offset parser + hand-built vote ixs,
+no solana-vote-interface runtime dep — dev-dep only),
+instructions/{init_pool,update_params,deposit,withdraw,enroll,set_credit_limit,
+top_up,sweep,withdraw_surplus,exit,sim}.rs.
+LP = classic SPL mint `["lp", pool]` (anchor-spl 1.2.2, 9 dec, authority=pool PDA);
+vault = system-owned PDA `["vault", pool]` funded with rent_min(0).
+Anchor 1.2.2 notes: `CpiContext::new(program_id: Pubkey, ..)` (not AccountInfo);
+anchor-spl needs `idl-build = [.., "anchor-spl/idl-build"]`; `init-if-needed` feature on.
+Tests: `tests/common/mod.rs` helpers; vote accounts crafted via solana-vote-interface 6.0.3;
+`Rent::default()` applies (rent_min(0)=890_880, rent_min(3762)=27_074_400).
 - Localnet: `…/releases/4.3.2/…/solana-test-validator --reset --ledger /root/solanaHack/.localnet/ledger --slots-per-epoch 128`
 
 ## Spike findings

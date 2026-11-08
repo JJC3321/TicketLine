@@ -11,17 +11,19 @@ name = "ticketline"
 
 [features]
 default = []
+demo-sim = []
 cpi = ["no-entrypoint"]
 no-entrypoint = []
 no-log-ix-name = []
-idl-build = ["anchor-lang/idl-build"]
+idl-build = ["anchor-lang/idl-build", "anchor-spl/idl-build"]
 anchor-debug = []
 custom-heap = []
 custom-panic = []
 
 
 [dependencies]
-anchor-lang = "1.2.2"
+anchor-lang = { version = "1.2.2", features = ["init-if-needed"] }
+anchor-spl = "1.2.2"
 
 [dev-dependencies]
 # Cargo.lock pins LiteSVM's Rust-1.89-compatible dependency graph.
@@ -33,6 +35,7 @@ solana-keypair = "3"
 solana-vote-interface = { version = "6", features = ["bincode"] }
 solana-account = "4"
 solana-sdk-ids = "3"
+solana-clock = { version = "3.1.1", features = ["wincode"] }
 
 
 [lints.rust]
