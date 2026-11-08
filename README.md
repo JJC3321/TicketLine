@@ -7,8 +7,6 @@
 - **Why Solana:** vote accounts have a programmable *authorized withdrawer*, so a PDA can hold a capability — not a key — that is provably limited to paying the ticket and repaying the pool.
 - **Status:** full on-chain program + 34 LiteSVM tests green (35 with the `demo-sim` feature); mainnet runway scanner over all 697 vote accounts; a scripted localnet rescue demo (`pnpm demo:fresh` → `pnpm demo:e2e`) and a live dashboard.
 
-**Hackathon:** MLH Solana Hackathon (Nov 6–8, 2026)  •  **Track:** DeFi  •  **Demo video:** VIDEO_LINK_HERE
-
 ![Mainnet runway dashboard](docs/screenshots/home.png)
 *The `/` page: every mainnet vote account scanned and classified by how many epochs its free balance can still cover the VAT.*
 
