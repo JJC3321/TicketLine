@@ -1,0 +1,1100 @@
+[
+  {
+    "pubkey": "HEYbDQwzZxSBSLaV7fpep3oUP8iCEch2265xzgWPW2pQ",
+    "lamports": 9880405449,
+    "owner": "Vote111111111111111111111111111111111111111",
+    "data_len": 3762,
+    "base64": "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Qz6GsQEAADcEAAAAAAAA1b8BQPcBAADp04d+1QEAADgEAAAAAAAAvdSxgwMCAADVvwFA9wEAAPuc0RsAAAAAN8nvagAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "jsonParsed": {
+      "info": {
+        "authorizedVoters": [
+          {
+            "authorizedVoter": "2DTXh3ruMU2SeWanqr4yeg5GR47V99Jq3wUdStQfda3V",
+            "epoch": 1063
+          },
+          {
+            "authorizedVoter": "2DTXh3ruMU2SeWanqr4yeg5GR47V99Jq3wUdStQfda3V",
+            "epoch": 1064
+          }
+        ],
+        "authorizedWithdrawer": "EGPNf2ESCFqxwq9LZuQonEjjVB3bYitEzFRHhfgWrghd",
+        "blockRevenueCollector": "2DTXh3ruMU2SeWanqr4yeg5GR47V99Jq3wUdStQfda3V",
+        "blockRevenueCommissionBps": 10000,
+        "blsPubkeyCompressed": "69WYuiqEjd9U3Ye4veBaKSEJC1pac165S5sh9NEyjbXZUJXSxAyBSRT71bYYb9knKh",
+        "commission": 0,
+        "epochCredits": [
+          {
+            "credits": "3424920",
+            "epoch": 1019,
+            "previousCredits": "0"
+          },
+          {
+            "credits": "8185500",
+            "epoch": 1020,
+            "previousCredits": "3424920"
+          },
+          {
+            "credits": "15089293",
+            "epoch": 1021,
+            "previousCredits": "8185500"
+          },
+          {
+            "credits": "21989789",
+            "epoch": 1022,
+            "previousCredits": "15089293"
+          },
+          {
+            "credits": "28895028",
+            "epoch": 1023,
+            "previousCredits": "21989789"
+          },
+          {
+            "credits": "35798527",
+            "epoch": 1024,
+            "previousCredits": "28895028"
+          },
+          {
+            "credits": "42706025",
+            "epoch": 1025,
+            "previousCredits": "35798527"
+          },
+          {
+            "credits": "49591233",
+            "epoch": 1026,
+            "previousCredits": "42706025"
+          },
+          {
+            "credits": "56481171",
+            "epoch": 1027,
+            "previousCredits": "49591233"
+          },
+          {
+            "credits": "63343039",
+            "epoch": 1028,
+            "previousCredits": "56481171"
+          },
+          {
+            "credits": "70250700",
+            "epoch": 1029,
+            "previousCredits": "63343039"
+          },
+          {
+            "credits": "77154778",
+            "epoch": 1030,
+            "previousCredits": "70250700"
+          },
+          {
+            "credits": "84052988",
+            "epoch": 1031,
+            "previousCredits": "77154778"
+          },
+          {
+            "credits": "90955686",
+            "epoch": 1032,
+            "previousCredits": "84052988"
+          },
+          {
+            "credits": "97849382",
+            "epoch": 1033,
+            "previousCredits": "90955686"
+          },
+          {
+            "credits": "104752886",
+            "epoch": 1034,
+            "previousCredits": "97849382"
+          },
+          {
+            "credits": "111644081",
+            "epoch": 1035,
+            "previousCredits": "104752886"
+          },
+          {
+            "credits": "118545837",
+            "epoch": 1036,
+            "previousCredits": "111644081"
+          },
+          {
+            "credits": "125452542",
+            "epoch": 1037,
+            "previousCredits": "118545837"
+          },
+          {
+            "credits": "132360414",
+            "epoch": 1038,
+            "previousCredits": "125452542"
+          },
+          {
+            "credits": "139267869",
+            "epoch": 1039,
+            "previousCredits": "132360414"
+          },
+          {
+            "credits": "146174119",
+            "epoch": 1040,
+            "previousCredits": "139267869"
+          },
+          {
+            "credits": "153079268",
+            "epoch": 1041,
+            "previousCredits": "146174119"
+          },
+          {
+            "credits": "159984580",
+            "epoch": 1042,
+            "previousCredits": "153079268"
+          },
+          {
+            "credits": "166872931",
+            "epoch": 1043,
+            "previousCredits": "159984580"
+          },
+          {
+            "credits": "173781978",
+            "epoch": 1044,
+            "previousCredits": "166872931"
+          },
+          {
+            "credits": "180689093",
+            "epoch": 1045,
+            "previousCredits": "173781978"
+          },
+          {
+            "credits": "187589040",
+            "epoch": 1046,
+            "previousCredits": "180689093"
+          },
+          {
+            "credits": "194492790",
+            "epoch": 1047,
+            "previousCredits": "187589040"
+          },
+          {
+            "credits": "201399035",
+            "epoch": 1048,
+            "previousCredits": "194492790"
+          },
+          {
+            "credits": "208301787",
+            "epoch": 1049,
+            "previousCredits": "201399035"
+          },
+          {
+            "credits": "215200896",
+            "epoch": 1050,
+            "previousCredits": "208301787"
+          },
+          {
+            "credits": "222108601",
+            "epoch": 1051,
+            "previousCredits": "215200896"
+          },
+          {
+            "credits": "229014809",
+            "epoch": 1052,
+            "previousCredits": "222108601"
+          },
+          {
+            "credits": "235922244",
+            "epoch": 1053,
+            "previousCredits": "229014809"
+          },
+          {
+            "credits": "242831057",
+            "epoch": 1054,
+            "previousCredits": "235922244"
+          },
+          {
+            "credits": "249733767",
+            "epoch": 1055,
+            "previousCredits": "242831057"
+          },
+          {
+            "credits": "256634597",
+            "epoch": 1056,
+            "previousCredits": "249733767"
+          },
+          {
+            "credits": "263536947",
+            "epoch": 1057,
+            "previousCredits": "256634597"
+          },
+          {
+            "credits": "270446126",
+            "epoch": 1058,
+            "previousCredits": "263536947"
+          },
+          {
+            "credits": "277347698",
+            "epoch": 1059,
+            "previousCredits": "270446126"
+          },
+          {
+            "credits": "284256355",
+            "epoch": 1060,
+            "previousCredits": "277347698"
+          },
+          {
+            "credits": "291167375",
+            "epoch": 1061,
+            "previousCredits": "284256355"
+          },
+          {
+            "credits": "298075448",
+            "epoch": 1062,
+            "previousCredits": "291167375"
+          },
+          {
+            "credits": "304964215",
+            "epoch": 1063,
+            "previousCredits": "298075448"
+          },
+          {
+            "credits": "305043271",
+            "epoch": 1064,
+            "previousCredits": "304964215"
+          },
+          {
+            "credits": "18446744073709551615",
+            "epoch": 18446744073709552000,
+            "previousCredits": "18446744073709551615"
+          },
+          {
+            "credits": "140719704670",
+            "epoch": 1064,
+            "previousCredits": "305043271"
+          },
+          {
+            "credits": "282297969802",
+            "epoch": 1065,
+            "previousCredits": "140719704670"
+          },
+          {
+            "credits": "426654693783",
+            "epoch": 1066,
+            "previousCredits": "282297969802"
+          },
+          {
+            "credits": "564170240196",
+            "epoch": 1067,
+            "previousCredits": "426654693783"
+          },
+          {
+            "credits": "711499253659",
+            "epoch": 1068,
+            "previousCredits": "564170240196"
+          },
+          {
+            "credits": "858608909648",
+            "epoch": 1069,
+            "previousCredits": "711499253659"
+          },
+          {
+            "credits": "1001906478523",
+            "epoch": 1070,
+            "previousCredits": "858608909648"
+          },
+          {
+            "credits": "1157650889929",
+            "epoch": 1071,
+            "previousCredits": "1001906478523"
+          },
+          {
+            "credits": "1298772596281",
+            "epoch": 1072,
+            "previousCredits": "1157650889929"
+          },
+          {
+            "credits": "1298773939689",
+            "epoch": 1073,
+            "previousCredits": "1298772596281"
+          },
+          {
+            "credits": "1438180671565",
+            "epoch": 1074,
+            "previousCredits": "1298773939689"
+          },
+          {
+            "credits": "1579321416479",
+            "epoch": 1075,
+            "previousCredits": "1438180671565"
+          },
+          {
+            "credits": "1725030717297",
+            "epoch": 1076,
+            "previousCredits": "1579321416479"
+          },
+          {
+            "credits": "1861973066589",
+            "epoch": 1077,
+            "previousCredits": "1725030717297"
+          },
+          {
+            "credits": "2016462492649",
+            "epoch": 1078,
+            "previousCredits": "1861973066589"
+          },
+          {
+            "credits": "2161442406357",
+            "epoch": 1079,
+            "previousCredits": "2016462492649"
+          },
+          {
+            "credits": "2214701767095",
+            "epoch": 1080,
+            "previousCredits": "2161442406357"
+          }
+        ],
+        "inflationRewardsCollector": "HEYbDQwzZxSBSLaV7fpep3oUP8iCEch2265xzgWPW2pQ",
+        "inflationRewardsCommissionBps": 0,
+        "lastTimestamp": {
+          "slot": 466723816,
+          "timestamp": 1794099890
+        },
+        "nodePubkey": "2DTXh3ruMU2SeWanqr4yeg5GR47V99Jq3wUdStQfda3V",
+        "pendingDelegatorRewards": "0",
+        "priorVoters": [],
+        "rootSlot": 466723799,
+        "votes": [
+          {
+            "confirmationCount": 1,
+            "latency": 0,
+            "slot": 466723818
+          }
+        ]
+      },
+      "type": "vote"
+    }
+  },
+  {
+    "pubkey": "HcbE5huUVDgsf7SURsRfQqnFMp3Zz3i49eXMddugPyAP",
+    "lamports": 4124759790,
+    "owner": "Vote111111111111111111111111111111111111111",
+    "data_len": 3762,
+    "base64": "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oclxHwAAADcEAAAAAAAA0Y8mOiQAAACsktDeIQAAADgEAAAAAAAAnaeIfiUAAADRjyY6JAAAAAWd0RsAAAAAOcnvagAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "jsonParsed": {
+      "info": {
+        "authorizedVoters": [
+          {
+            "authorizedVoter": "FdH9QEQBxPQfaF2JpcjgdfcMnDb7rjZkCDRCWLRjTQwj",
+            "epoch": 1063
+          },
+          {
+            "authorizedVoter": "FdH9QEQBxPQfaF2JpcjgdfcMnDb7rjZkCDRCWLRjTQwj",
+            "epoch": 1064
+          }
+        ],
+        "authorizedWithdrawer": "ASq8f1MR52nbCpAiTX82F4R11drmPbkNQf9EoaeGK83V",
+        "blockRevenueCollector": "FdH9QEQBxPQfaF2JpcjgdfcMnDb7rjZkCDRCWLRjTQwj",
+        "blockRevenueCommissionBps": 10000,
+        "blsPubkeyCompressed": "7QrGeMW4xuTbMixxrCzw3j8HsUx7FtkwyhDDq2uNYLLu6Vj7jT3f2M4GBYeX18uNNz",
+        "commission": 0,
+        "epochCredits": [
+          {
+            "credits": "2358741313",
+            "epoch": 1019,
+            "previousCredits": "2351837701"
+          },
+          {
+            "credits": "2365645300",
+            "epoch": 1020,
+            "previousCredits": "2358741313"
+          },
+          {
+            "credits": "2372551703",
+            "epoch": 1021,
+            "previousCredits": "2365645300"
+          },
+          {
+            "credits": "2379455592",
+            "epoch": 1022,
+            "previousCredits": "2372551703"
+          },
+          {
+            "credits": "2386362534",
+            "epoch": 1023,
+            "previousCredits": "2379455592"
+          },
+          {
+            "credits": "2393268274",
+            "epoch": 1024,
+            "previousCredits": "2386362534"
+          },
+          {
+            "credits": "2400176721",
+            "epoch": 1025,
+            "previousCredits": "2393268274"
+          },
+          {
+            "credits": "2407085052",
+            "epoch": 1026,
+            "previousCredits": "2400176721"
+          },
+          {
+            "credits": "2413981289",
+            "epoch": 1027,
+            "previousCredits": "2407085052"
+          },
+          {
+            "credits": "2420857818",
+            "epoch": 1028,
+            "previousCredits": "2413981289"
+          },
+          {
+            "credits": "2427766475",
+            "epoch": 1029,
+            "previousCredits": "2420857818"
+          },
+          {
+            "credits": "2434672631",
+            "epoch": 1030,
+            "previousCredits": "2427766475"
+          },
+          {
+            "credits": "2441574730",
+            "epoch": 1031,
+            "previousCredits": "2434672631"
+          },
+          {
+            "credits": "2448252162",
+            "epoch": 1032,
+            "previousCredits": "2441574730"
+          },
+          {
+            "credits": "2455157867",
+            "epoch": 1033,
+            "previousCredits": "2448252162"
+          },
+          {
+            "credits": "2462063680",
+            "epoch": 1034,
+            "previousCredits": "2455157867"
+          },
+          {
+            "credits": "2468960718",
+            "epoch": 1035,
+            "previousCredits": "2462063680"
+          },
+          {
+            "credits": "2475865307",
+            "epoch": 1036,
+            "previousCredits": "2468960718"
+          },
+          {
+            "credits": "2482773390",
+            "epoch": 1037,
+            "previousCredits": "2475865307"
+          },
+          {
+            "credits": "2489682332",
+            "epoch": 1038,
+            "previousCredits": "2482773390"
+          },
+          {
+            "credits": "2496590202",
+            "epoch": 1039,
+            "previousCredits": "2489682332"
+          },
+          {
+            "credits": "2503497980",
+            "epoch": 1040,
+            "previousCredits": "2496590202"
+          },
+          {
+            "credits": "2510405613",
+            "epoch": 1041,
+            "previousCredits": "2503497980"
+          },
+          {
+            "credits": "2517313398",
+            "epoch": 1042,
+            "previousCredits": "2510405613"
+          },
+          {
+            "credits": "2524223368",
+            "epoch": 1043,
+            "previousCredits": "2517313398"
+          },
+          {
+            "credits": "2531133669",
+            "epoch": 1044,
+            "previousCredits": "2524223368"
+          },
+          {
+            "credits": "2538041712",
+            "epoch": 1045,
+            "previousCredits": "2531133669"
+          },
+          {
+            "credits": "2544944381",
+            "epoch": 1046,
+            "previousCredits": "2538041712"
+          },
+          {
+            "credits": "2551850375",
+            "epoch": 1047,
+            "previousCredits": "2544944381"
+          },
+          {
+            "credits": "2558758493",
+            "epoch": 1048,
+            "previousCredits": "2551850375"
+          },
+          {
+            "credits": "2565664095",
+            "epoch": 1049,
+            "previousCredits": "2558758493"
+          },
+          {
+            "credits": "2572567130",
+            "epoch": 1050,
+            "previousCredits": "2565664095"
+          },
+          {
+            "credits": "2579476255",
+            "epoch": 1051,
+            "previousCredits": "2572567130"
+          },
+          {
+            "credits": "2586384337",
+            "epoch": 1052,
+            "previousCredits": "2579476255"
+          },
+          {
+            "credits": "2593293641",
+            "epoch": 1053,
+            "previousCredits": "2586384337"
+          },
+          {
+            "credits": "2600203752",
+            "epoch": 1054,
+            "previousCredits": "2593293641"
+          },
+          {
+            "credits": "2607108901",
+            "epoch": 1055,
+            "previousCredits": "2600203752"
+          },
+          {
+            "credits": "2614012615",
+            "epoch": 1056,
+            "previousCredits": "2607108901"
+          },
+          {
+            "credits": "2620917108",
+            "epoch": 1057,
+            "previousCredits": "2614012615"
+          },
+          {
+            "credits": "2627826375",
+            "epoch": 1058,
+            "previousCredits": "2620917108"
+          },
+          {
+            "credits": "2634730041",
+            "epoch": 1059,
+            "previousCredits": "2627826375"
+          },
+          {
+            "credits": "2641639041",
+            "epoch": 1060,
+            "previousCredits": "2634730041"
+          },
+          {
+            "credits": "2648549895",
+            "epoch": 1061,
+            "previousCredits": "2641639041"
+          },
+          {
+            "credits": "2655457846",
+            "epoch": 1062,
+            "previousCredits": "2648549895"
+          },
+          {
+            "credits": "2662362891",
+            "epoch": 1063,
+            "previousCredits": "2655457846"
+          },
+          {
+            "credits": "2662441947",
+            "epoch": 1064,
+            "previousCredits": "2662362891"
+          },
+          {
+            "credits": "18446744073709551615",
+            "epoch": 18446744073709552000,
+            "previousCredits": "18446744073709551615"
+          },
+          {
+            "credits": "10252885444",
+            "epoch": 1064,
+            "previousCredits": "2662441947"
+          },
+          {
+            "credits": "19243558242",
+            "epoch": 1065,
+            "previousCredits": "10252885444"
+          },
+          {
+            "credits": "25984653174",
+            "epoch": 1066,
+            "previousCredits": "19243558242"
+          },
+          {
+            "credits": "34582672297",
+            "epoch": 1067,
+            "previousCredits": "25984653174"
+          },
+          {
+            "credits": "42455104005",
+            "epoch": 1068,
+            "previousCredits": "34582672297"
+          },
+          {
+            "credits": "52377860258",
+            "epoch": 1069,
+            "previousCredits": "42455104005"
+          },
+          {
+            "credits": "62650730386",
+            "epoch": 1070,
+            "previousCredits": "52377860258"
+          },
+          {
+            "credits": "73492740443",
+            "epoch": 1071,
+            "previousCredits": "62650730386"
+          },
+          {
+            "credits": "81752593830",
+            "epoch": 1072,
+            "previousCredits": "73492740443"
+          },
+          {
+            "credits": "91869357367",
+            "epoch": 1073,
+            "previousCredits": "81752593830"
+          },
+          {
+            "credits": "104074521596",
+            "epoch": 1074,
+            "previousCredits": "91869357367"
+          },
+          {
+            "credits": "113947238221",
+            "epoch": 1075,
+            "previousCredits": "104074521596"
+          },
+          {
+            "credits": "125230102731",
+            "epoch": 1076,
+            "previousCredits": "113947238221"
+          },
+          {
+            "credits": "135053025573",
+            "epoch": 1077,
+            "previousCredits": "125230102731"
+          },
+          {
+            "credits": "145472131756",
+            "epoch": 1078,
+            "previousCredits": "135053025573"
+          },
+          {
+            "credits": "155594428369",
+            "epoch": 1079,
+            "previousCredits": "145472131756"
+          },
+          {
+            "credits": "161058684961",
+            "epoch": 1080,
+            "previousCredits": "155594428369"
+          }
+        ],
+        "inflationRewardsCollector": "HcbE5huUVDgsf7SURsRfQqnFMp3Zz3i49eXMddugPyAP",
+        "inflationRewardsCommissionBps": 0,
+        "lastTimestamp": {
+          "slot": 466723821,
+          "timestamp": 1794099891
+        },
+        "nodePubkey": "FdH9QEQBxPQfaF2JpcjgdfcMnDb7rjZkCDRCWLRjTQwj",
+        "pendingDelegatorRewards": "0",
+        "priorVoters": [],
+        "rootSlot": 466723825,
+        "votes": [
+          {
+            "confirmationCount": 1,
+            "latency": 0,
+            "slot": 466723825
+          }
+        ]
+      },
+      "type": "vote"
+    }
+  },
+  {
+    "pubkey": "gVot34jauJpexBL2YUSPBKsmZ4V2ffmDcRk4yfSEnx8",
+    "lamports": 12753702875,
+    "owner": "Vote111111111111111111111111111111111111111",
+    "data_len": 3762,
+    "base64": "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TQDqPgAAADcEAAAAAAAA7OqWc0cAAACLRVQzQwAAADgEAAAAAAAACrQz0EgAAADs6pZzRwAAAPuc0RsAAAAAN8nvagAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "jsonParsed": {
+      "info": {
+        "authorizedVoters": [
+          {
+            "authorizedVoter": "gVALrRd3xq4D62KJNGDCpMMGz976w2x1Vo79mSNn4bh",
+            "epoch": 1063
+          },
+          {
+            "authorizedVoter": "gVALrRd3xq4D62KJNGDCpMMGz976w2x1Vo79mSNn4bh",
+            "epoch": 1064
+          }
+        ],
+        "authorizedWithdrawer": "gcesgtCGZKwRmT6AaXERFFQUnsy8v8hBzoXyqj1hJr7",
+        "blockRevenueCollector": "gVALrRd3xq4D62KJNGDCpMMGz976w2x1Vo79mSNn4bh",
+        "blockRevenueCommissionBps": 10000,
+        "blsPubkeyCompressed": "6N9yAyvWBhoRehb46oczgYeaj5MzvGqeZgHG3hTb2rkG1FQtGbARznyJntGtbWbPb6",
+        "commission": 5,
+        "epochCredits": [
+          {
+            "credits": "1983238137",
+            "epoch": 1019,
+            "previousCredits": "1976342732"
+          },
+          {
+            "credits": "1990138617",
+            "epoch": 1020,
+            "previousCredits": "1983238137"
+          },
+          {
+            "credits": "1997042536",
+            "epoch": 1021,
+            "previousCredits": "1990138617"
+          },
+          {
+            "credits": "2003943001",
+            "epoch": 1022,
+            "previousCredits": "1997042536"
+          },
+          {
+            "credits": "2010848204",
+            "epoch": 1023,
+            "previousCredits": "2003943001"
+          },
+          {
+            "credits": "2017751312",
+            "epoch": 1024,
+            "previousCredits": "2010848204"
+          },
+          {
+            "credits": "2024658521",
+            "epoch": 1025,
+            "previousCredits": "2017751312"
+          },
+          {
+            "credits": "2031565802",
+            "epoch": 1026,
+            "previousCredits": "2024658521"
+          },
+          {
+            "credits": "2038455737",
+            "epoch": 1027,
+            "previousCredits": "2031565802"
+          },
+          {
+            "credits": "2045317412",
+            "epoch": 1028,
+            "previousCredits": "2038455737"
+          },
+          {
+            "credits": "2052225049",
+            "epoch": 1029,
+            "previousCredits": "2045317412"
+          },
+          {
+            "credits": "2059129104",
+            "epoch": 1030,
+            "previousCredits": "2052225049"
+          },
+          {
+            "credits": "2066027295",
+            "epoch": 1031,
+            "previousCredits": "2059129104"
+          },
+          {
+            "credits": "2072929550",
+            "epoch": 1032,
+            "previousCredits": "2066027295"
+          },
+          {
+            "credits": "2079833221",
+            "epoch": 1033,
+            "previousCredits": "2072929550"
+          },
+          {
+            "credits": "2086736745",
+            "epoch": 1034,
+            "previousCredits": "2079833221"
+          },
+          {
+            "credits": "2093627924",
+            "epoch": 1035,
+            "previousCredits": "2086736745"
+          },
+          {
+            "credits": "2100529665",
+            "epoch": 1036,
+            "previousCredits": "2093627924"
+          },
+          {
+            "credits": "2107436408",
+            "epoch": 1037,
+            "previousCredits": "2100529665"
+          },
+          {
+            "credits": "2114344311",
+            "epoch": 1038,
+            "previousCredits": "2107436408"
+          },
+          {
+            "credits": "2121249443",
+            "epoch": 1039,
+            "previousCredits": "2114344311"
+          },
+          {
+            "credits": "2128155686",
+            "epoch": 1040,
+            "previousCredits": "2121249443"
+          },
+          {
+            "credits": "2135060446",
+            "epoch": 1041,
+            "previousCredits": "2128155686"
+          },
+          {
+            "credits": "2141964825",
+            "epoch": 1042,
+            "previousCredits": "2135060446"
+          },
+          {
+            "credits": "2148868119",
+            "epoch": 1043,
+            "previousCredits": "2141964825"
+          },
+          {
+            "credits": "2155775363",
+            "epoch": 1044,
+            "previousCredits": "2148868119"
+          },
+          {
+            "credits": "2162682457",
+            "epoch": 1045,
+            "previousCredits": "2155775363"
+          },
+          {
+            "credits": "2169579444",
+            "epoch": 1046,
+            "previousCredits": "2162682457"
+          },
+          {
+            "credits": "2176480313",
+            "epoch": 1047,
+            "previousCredits": "2169579444"
+          },
+          {
+            "credits": "2183386678",
+            "epoch": 1048,
+            "previousCredits": "2176480313"
+          },
+          {
+            "credits": "2190289834",
+            "epoch": 1049,
+            "previousCredits": "2183386678"
+          },
+          {
+            "credits": "2197187852",
+            "epoch": 1050,
+            "previousCredits": "2190289834"
+          },
+          {
+            "credits": "2204094782",
+            "epoch": 1051,
+            "previousCredits": "2197187852"
+          },
+          {
+            "credits": "2210998527",
+            "epoch": 1052,
+            "previousCredits": "2204094782"
+          },
+          {
+            "credits": "2217905276",
+            "epoch": 1053,
+            "previousCredits": "2210998527"
+          },
+          {
+            "credits": "2224813725",
+            "epoch": 1054,
+            "previousCredits": "2217905276"
+          },
+          {
+            "credits": "2231715162",
+            "epoch": 1055,
+            "previousCredits": "2224813725"
+          },
+          {
+            "credits": "2238605514",
+            "epoch": 1056,
+            "previousCredits": "2231715162"
+          },
+          {
+            "credits": "2245501772",
+            "epoch": 1057,
+            "previousCredits": "2238605514"
+          },
+          {
+            "credits": "2252408170",
+            "epoch": 1058,
+            "previousCredits": "2245501772"
+          },
+          {
+            "credits": "2259305197",
+            "epoch": 1059,
+            "previousCredits": "2252408170"
+          },
+          {
+            "credits": "2266210271",
+            "epoch": 1060,
+            "previousCredits": "2259305197"
+          },
+          {
+            "credits": "2273113518",
+            "epoch": 1061,
+            "previousCredits": "2266210271"
+          },
+          {
+            "credits": "2280016800",
+            "epoch": 1062,
+            "previousCredits": "2273113518"
+          },
+          {
+            "credits": "2286914536",
+            "epoch": 1063,
+            "previousCredits": "2280016800"
+          },
+          {
+            "credits": "2286993568",
+            "epoch": 1064,
+            "previousCredits": "2286914536"
+          },
+          {
+            "credits": "18446744073709551615",
+            "epoch": 18446744073709552000,
+            "previousCredits": "18446744073709551615"
+          },
+          {
+            "credits": "20446729256",
+            "epoch": 1064,
+            "previousCredits": "2286993568"
+          },
+          {
+            "credits": "38496559633",
+            "epoch": 1065,
+            "previousCredits": "20446729256"
+          },
+          {
+            "credits": "55563871826",
+            "epoch": 1066,
+            "previousCredits": "38496559633"
+          },
+          {
+            "credits": "73446228550",
+            "epoch": 1067,
+            "previousCredits": "55563871826"
+          },
+          {
+            "credits": "92905339951",
+            "epoch": 1068,
+            "previousCredits": "73446228550"
+          },
+          {
+            "credits": "113500483135",
+            "epoch": 1069,
+            "previousCredits": "92905339951"
+          },
+          {
+            "credits": "133744676391",
+            "epoch": 1070,
+            "previousCredits": "113500483135"
+          },
+          {
+            "credits": "152818469624",
+            "epoch": 1071,
+            "previousCredits": "133744676391"
+          },
+          {
+            "credits": "174031086659",
+            "epoch": 1072,
+            "previousCredits": "152818469624"
+          },
+          {
+            "credits": "194015987478",
+            "epoch": 1073,
+            "previousCredits": "174031086659"
+          },
+          {
+            "credits": "214175135409",
+            "epoch": 1074,
+            "previousCredits": "194015987478"
+          },
+          {
+            "credits": "231783591196",
+            "epoch": 1075,
+            "previousCredits": "214175135409"
+          },
+          {
+            "credits": "253224794431",
+            "epoch": 1076,
+            "previousCredits": "231783591196"
+          },
+          {
+            "credits": "270213860756",
+            "epoch": 1077,
+            "previousCredits": "253224794431"
+          },
+          {
+            "credits": "288623969675",
+            "epoch": 1078,
+            "previousCredits": "270213860756"
+          },
+          {
+            "credits": "306881948396",
+            "epoch": 1079,
+            "previousCredits": "288623969675"
+          },
+          {
+            "credits": "312769557490",
+            "epoch": 1080,
+            "previousCredits": "306881948396"
+          }
+        ],
+        "inflationRewardsCollector": "gVot34jauJpexBL2YUSPBKsmZ4V2ffmDcRk4yfSEnx8",
+        "inflationRewardsCommissionBps": 500,
+        "lastTimestamp": {
+          "slot": 466723816,
+          "timestamp": 1794099890
+        },
+        "nodePubkey": "gVALrRd3xq4D62KJNGDCpMMGz976w2x1Vo79mSNn4bh",
+        "pendingDelegatorRewards": "0",
+        "priorVoters": [],
+        "rootSlot": 466723325,
+        "votes": [
+          {
+            "confirmationCount": 1,
+            "latency": 0,
+            "slot": 466723818
+          }
+        ]
+      },
+      "type": "vote"
+    }
+  }
+]

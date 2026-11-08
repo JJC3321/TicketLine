@@ -1,0 +1,76 @@
+# TicketLine — agent notes (Phase 0)
+
+## Environment (WSL2 Ubuntu 24.04, user root)
+| Tool | Version | Path |
+|---|---|---|
+| rustc/cargo | 1.99.1 stable | ~/.cargo/bin |
+| Agave CLI (active, for `anchor build`) | 4.1.2 | ~/.local/share/solana/install/active_release/bin |
+| Agave 4.3.2 binaries (test-validator) | 4.3.2 | ~/.local/share/solana/install/releases/4.3.2/solana-release/bin |
+| Anchor | 1.2.2 (via avm 1.2.2) | ~/.avm/bin via cargo |
+| Node | 22.23.4 (nvm) | ~/.nvm |
+| pnpm | 12.18.0 (corepack) | |
+
+PATH notes: `avm install` RE-POINTED `active_release` at 4.1.2 — that is the intended
+state: anchor 1.2.2 builds with 4.1.2 platform tools; run the **4.3.2**
+`solana-test-validator` by absolute path:
+`/root/.local/share/solana/install/releases/4.3.2/solana-release/bin/solana-test-validator`.
+`bash -lc` is a login shell → reads `~/.bash_profile` (sources `.profile` + `.bashrc`);
+nvm is initialized in `~/.profile`. `wsl bash -s` has NO PATH — always use `bash -lc`.
+CLI keypair: `~/.config/solana/id.json`, RPC url = localhost.
+
+## Commands
+- `anchor build`, `cargo test -p ticketline` — both PASS (Agave 4.1.2 active).
+- Localnet: `…/releases/4.3.2/…/solana-test-validator --reset --ledger /root/solanaHack/.localnet/ledger --slots-per-epoch 128`
+
+## Spike findings
+
+### S1 (PDA vote CPI) — PASS
+`programs/ticketline/src/spike.rs` + `tests/spike_vote.rs`:
+- Hand-encoded vote `Withdraw` = `[3,0,0,0]++u64le` and `Authorize(new,Withdrawer)` =
+  `[1,0,0,0]++pubkey++[1,0,0,0]` are byte-identical to `solana-vote-interface` 6.0.3 builders.
+- PDA (`["auth", vote_account]`) successfully signs both via `invoke_signed`; lamports move,
+  `authorized_withdrawer` changes (verified by re-deserialize + fixed-offset parser).
+- Fixed-offset V4 parser (plan §5.1 offsets) verified against `VoteStateVersions::deserialize`.
+- **Vote `Withdraw` floor (agave 4.1.2 source `vote_state::withdraw`):** remaining balance must
+  be ≥ `rent_exempt(data_len) + pending_delegator_rewards`, OR withdraw ALL to 0 (deinitializes
+  the account; refused if `pending>0` or account had credits within last 2 epochs
+  `ActiveVoteAccountClose`). Test asserts the into-pending withdrawal fails.
+- `solana-vote-interface` **6.0.3** with `features=["bincode"]` is the dev-dep (already in tree
+  via solana-vote-program 4.1.2). Vote program runs as a **builtin in LiteSVM** — no .so needed.
+- VoteStateV4::size_of() = **3762**; rent-exempt for 3762 = **27,074,400 lamports** (localnet,
+  Rent::default; mainnet RPC says 19,761,200 — different rent parameters!).
+
+### S2 (localnet, Agave 4.3.2) — findings
+- `--slots-per-epoch 128` accepted; epoch ≈ **30 s** (~4.3 slots/s, ~230 ms/slot).
+- Features **active since epoch 0**: SIMD-0357 (Alpenglow VAT), SIMD-0185 (VoteState v4),
+  SIMD-0387 (BLS mgmt), SIMD-0388 (BLS syscalls). **SIMD-0326 (Votor/new consensus) INACTIVE.**
+- Bootstrap vote account = V4, BLS key **present**, `authorized_withdrawer` = the vote account
+  itself → keypair at **`.localnet/ledger/vote-account-keypair.json`**. Identity =
+  `validator-keypair.json`. inflation_rewards_collector = vote account, commission **0 bps**.
+- Genesis pre-funds vote account with **1,000,000 SOL** (not "100 tickets").
+- **VAT is NOT burned on localnet** (Votor inactive): balance flat across 11 epochs; log only
+  prints `VAT: epoch N in (stake: …), epoch N+2: eligible if staked`. Stake grows ~31 SOL/epoch.
+- **No inflation commission to vote account** (`getInflationReward` amount=0, commission=null;
+  0 bps anyway). → Both `demo-sim` `sim_ticket_burn` and `/demo/sim-commission` are REQUIRED.
+- Drained vote account to 1.5 SOL via `solana withdraw-from-vote-account
+  --authorized-withdrawer ledger/vote-account-keypair.json`: chain kept producing across ≥3
+  boundaries, still "eligible". → localnet never halts on balance; drain is safe for demos.
+- Validator cannot pay fees from the vote account keypair (use default payer for the withdraw tx).
+
+### S3 (mainnet, public RPC) — numbers
+- `getVoteAccounts`: 664 current + 33 delinquent = **697**; `getMultipleAccounts` base64
+  batches of 100 fine.
+- **100% parse as V4**, all data len **3762**, BLS present on **684 (98.1%)**.
+- `pending_delegator_rewards` = 0 on **all** accounts (field exists, currently always 0 on mainnet).
+- mainnet rent-exempt(3762) = **19,761,200 lamports** (~0.0198 SOL).
+- free = lamports−pending−rent: **33 < 0.8 SOL**, **41 < 1.6 SOL**.
+- `getInflationReward`: works on public RPC but **max 32 addresses/call** (not 100);
+  `commission` field returns `null` (public RPC doesn't expose it); `amount`+`postBalance` present.
+- Fixed-offset parser verified field-for-field against `jsonParsed` on a live account.
+- Fixtures: `data/fixtures/vote-accounts.json` (3 accounts, base64+jsonParsed),
+  `data/fixtures/s3-summary.json`. Scripts: `scripts/s3-scan.mjs`, `scripts/inspect-vote.mjs`.
+
+## Decisions encoded by spikes
+- Build/test with Agave 4.1.2 (active_release); localnet runs 4.3.2 binary by path.
+- Real-vs-sim: VAT burn and commission are **simulated** on localnet (`demo-sim` feature +
+  `/demo/sim-commission`), labeled per plan. PDA withdraw-authority enforcement is real.
